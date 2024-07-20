@@ -10,5 +10,6 @@ namespace TayoWeb.Data
 
         }
 
+        public DbSet<Category> Categories { get; set; }
     }
 }
