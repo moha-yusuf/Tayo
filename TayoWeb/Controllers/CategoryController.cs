@@ -14,8 +14,8 @@ namespace TayoWeb.Controllers
 
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
-            return View();
+            List<Category> categoryList = _db.Categories.ToList();
+            return View(categoryList);
         }
     }
 }

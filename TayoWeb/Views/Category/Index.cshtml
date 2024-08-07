@@ -1,4 +1,5 @@
-﻿
+﻿@model List<Category>
+
 <h1 class="text-center my-5">Categories List</h1>
 <table class="table table-hover">
     <thead class="table-light">
@@ -10,15 +11,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Shoes</td>
-            <td>1</td>
-            <td class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-                <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
-                <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</button>
-            </td>
-        </tr>
+        @foreach(var obj in Model)
+         {
+            <tr>
+                <th scope="row">1</th>
+                <td>@obj.Name</td>
+                <td>@obj.DisplayOrder</td>
+                <td class="d-flex flex-column flex-sm-row justify-content-center gap-2">
+                    <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
+                    <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</button>
+                </td>
+            </tr>
+         }
     </tbody>
 </table>
 
