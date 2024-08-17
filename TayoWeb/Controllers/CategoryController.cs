@@ -26,6 +26,11 @@ namespace TayoWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
+            // add custom validation
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("Name", "Name and Display Order can not exactly match");
+            }
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
