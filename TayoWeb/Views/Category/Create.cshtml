@@ -1,6 +1,7 @@
 ﻿@model Category
 
 <h1 class="pb-4">Categories List</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post">
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>

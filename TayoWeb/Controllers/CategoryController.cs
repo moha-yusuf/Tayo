@@ -31,6 +31,13 @@ namespace TayoWeb.Controllers
             {
                 ModelState.AddModelError("Name", "Name and Display Order can not exactly match");
             }
+
+            // add custom validation for validation summary only
+            if (obj.Name != null && obj.Name.ToLower() == "test")
+            {
+                ModelState.AddModelError("", "Name can not be \"test\"");
+            }
+
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
