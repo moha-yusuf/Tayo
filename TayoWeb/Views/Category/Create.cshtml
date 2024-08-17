@@ -4,16 +4,16 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" id="categoryName" value="Shoes" required>
+        <input asp-for="Name" class="form-control" id="categoryName" required>
     </div>
     <div class="mb-3">
         <label asp-for="DisplayOrder" class="form-label"></label>
-        <input asp-for="DisplayOrder" class="form-control" id="displayOrder" value="1" required>
+        <input asp-for="DisplayOrder" class="form-control" id="displayOrder" required>
     </div>
 @*     <div class="mb-3">
         <label for="categoryDescription" class="form-label">Description</label>
         <textarea class="form-control" id="categoryDescription" rows="3">Comfortable and stylish footwear for all occasions.</textarea>
     </div> *@
     <button type="submit" class="btn btn-primary">Save Changes</button>
-    <a href="index.html" class="btn btn-secondary ms-2">Cancel</a>
+    <a asp-controller="Category" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>
