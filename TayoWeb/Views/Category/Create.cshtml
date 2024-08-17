@@ -4,11 +4,13 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" id="categoryName" required>
+        <input asp-for="Name" class="form-control" id="categoryName">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="DisplayOrder" class="form-label"></label>
-        <input asp-for="DisplayOrder" class="form-control" id="displayOrder" required>
+        <input asp-for="DisplayOrder" class="form-control" id="displayOrder">
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
     </div>
 @*     <div class="mb-3">
         <label for="categoryDescription" class="form-label">Description</label>
