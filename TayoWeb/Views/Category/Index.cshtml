@@ -22,7 +22,7 @@
                 <td>@obj.Name</td>
                 <td>@obj.DisplayOrder</td>
                 <td class="d-flex flex-column flex-sm-row justify-content-center gap-2">
-                    <button class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</button>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
                     <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Delete</button>
                 </td>
             </tr>
