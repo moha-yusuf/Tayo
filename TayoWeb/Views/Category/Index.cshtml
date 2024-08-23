@@ -1,14 +1,19 @@
 ﻿@model List<Category>
 
-<div class="d-flex justify-content-between p-2">
+@if (TempData["success"] != null)
+{
+    <h2>@TempData["success"]</h2>
+}
+
+<div class="d-flex justify-content-between p-2 mb-4">
     <h1>Categories List</h1>
     <a type="button" asp-controller="Category" asp-action="Create" class="btn btn-primary">
         <i class="bi bi-plus-circle"></i>
         CREATE NEW CATEGORY
     </a>
 </div>
-<table class="table table-hover">   
-    <thead class="table-light">
+<table class="table border-top border-buttom table-hover">
+    <thead>
         <tr>
             <th scope="col">Category</th>
             <th scope="col">Display Order</th>
