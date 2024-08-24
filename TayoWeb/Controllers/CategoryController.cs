@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TayoWeb.Data;
-using TayoWeb.Models;
+using Bulky.DataAccess.Data;
+using Bulky.Models;
 
 namespace TayoWeb.Controllers
 {

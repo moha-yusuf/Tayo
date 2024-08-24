@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TayoWeb.Models;
+using Bulky.Models;
 
-namespace TayoWeb.Data
+namespace Bulky.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
