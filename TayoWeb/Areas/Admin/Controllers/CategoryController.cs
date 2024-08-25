@@ -4,8 +4,9 @@ using Bulky.Models;
 using Bulky.DataAccess.Repository.IRepository;
 using BulkyBook.DataAccess.Repository.IRepository;
 
-namespace TayoWeb.Controllers
+namespace TayoWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
