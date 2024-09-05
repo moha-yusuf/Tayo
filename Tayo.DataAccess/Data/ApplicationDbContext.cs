@@ -14,6 +14,8 @@ namespace Tayo.DataAccess.Data
         public DbSet<Collection> Collections { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
 
+        public DbSet<ProductColor> ProductColors { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
@@ -30,6 +32,10 @@ namespace Tayo.DataAccess.Data
             modelBuilder.Entity<ProductSize>().HasData(
                 new ProductSize { Id = 1, Name = "Small", ImageUrl = "N/A", DisplayOrder = 1, IsActive = true },
                 new ProductSize { Id = 2, Name = "Medium", ImageUrl = "N/A", DisplayOrder = 2, IsActive = true }
+                );
+            modelBuilder.Entity<ProductColor>().HasData(
+                new ProductColor { Id = 1, Name = "Black", ImageUrl = "N/A", DisplayOrder = 1, IsActive = true },
+                new ProductColor { Id = 2, Name = "White", ImageUrl = "N/A", DisplayOrder = 2, IsActive = true }
                 );
         }
     }
