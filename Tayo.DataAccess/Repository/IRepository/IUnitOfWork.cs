@@ -10,6 +10,7 @@ namespace TayoBook.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         ICategoryRepository Category { get; }
+        ICollectionRepository Collection { get; }
 
         void Save();
     }
