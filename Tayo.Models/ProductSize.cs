@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tayo.Models
 {
-    public class Size
+    public class ProductSize
     {
         public int Id { get; set; }
 
@@ -15,11 +15,11 @@ namespace Tayo.Models
         [MaxLength(50)]
         public string Name { get; set; } // e.g., "Small", "Medium", "Large"
         [Required]
-        public string ImageUrl { get; set; } // Optional: Image showing the product in this size, if applicable
+        public string ImageUrl { get; set; } // Optional: Image showing the product in this ProductSize, if applicable
 
-        public int DisplayOrder { get; set; } // Controls the order in which sizes are displayed
+        public int DisplayOrder { get; set; } // Controls the order in which ProductSizes are displayed
 
-        public bool IsActive { get; set; } // Whether this size is available for selection
+        public bool IsActive { get; set; } // Whether this ProductSize is available for selection
     }
 
 }

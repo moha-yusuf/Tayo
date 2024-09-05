@@ -12,14 +12,14 @@ namespace Tayo.DataAccess.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Collection> Collections { get; set; }
-        public DbSet<Size> Sizes { get; set; }
+        public DbSet<ProductSize> ProductSizes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Shoes", DisplayOrder = 1 },
                 new Category { Id = 2, Name = "Jeans", DisplayOrder = 2 },
-                new Category { Id = 3, Name = "Kids", DisplayOrder = 3 }
+                new Category { Id = 3, Name = "Shirts", DisplayOrder = 3 }
                 );
 
             modelBuilder.Entity<Collection>().HasData(
@@ -27,9 +27,9 @@ namespace Tayo.DataAccess.Data
                 new Collection { Id = 2, Name = "Womens", DisplayOrder = 21 },
                 new Collection { Id = 3, Name = "Kids", DisplayOrder = 9 }
                 );
-            modelBuilder.Entity<Size>().HasData(
-                new Size { Id = 1, Name = "Small", ImageUrl = "N/A", DisplayOrder = 1, IsActive = true },
-                new Size { Id = 2, Name = "Medium", ImageUrl = "N/A", DisplayOrder = 2, IsActive = true }
+            modelBuilder.Entity<ProductSize>().HasData(
+                new ProductSize { Id = 1, Name = "Small", ImageUrl = "N/A", DisplayOrder = 1, IsActive = true },
+                new ProductSize { Id = 2, Name = "Medium", ImageUrl = "N/A", DisplayOrder = 2, IsActive = true }
                 );
         }
     }

@@ -58,7 +58,7 @@ namespace Tayo.DataAccess.Migrations
                         {
                             Id = 3,
                             DisplayOrder = 3,
-                            Name = "Kids"
+                            Name = "Shirts"
                         });
                 });
 
@@ -103,7 +103,7 @@ namespace Tayo.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Tayo.Models.Size", b =>
+            modelBuilder.Entity("Tayo.Models.ProductSize", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace Tayo.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sizes");
+                    b.ToTable("ProductSizes");
 
                     b.HasData(
                         new

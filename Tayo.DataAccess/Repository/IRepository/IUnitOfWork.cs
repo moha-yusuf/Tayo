@@ -11,6 +11,7 @@ namespace TayoBook.DataAccess.Repository.IRepository
     {
         ICategoryRepository Category { get; }
         ICollectionRepository Collection { get; }
+        IProductSizeRepository ProductSize { get; }
 
         void Save();
     }
