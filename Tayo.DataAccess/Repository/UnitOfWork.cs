@@ -1,13 +1,13 @@
-﻿using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.IRepository;
-using BulkyBook.DataAccess.Repository.IRepository;
+﻿using Tayo.DataAccess.Data;
+using Tayo.DataAccess.Repository.IRepository;
+using TayoBook.DataAccess.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bulky.DataAccess.Repository
+namespace Tayo.DataAccess.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

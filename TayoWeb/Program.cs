@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Bulky.DataAccess.Data;
-using Bulky.DataAccess.Repository.IRepository;
-using Bulky.DataAccess.Repository;
-using BulkyBook.DataAccess.Repository.IRepository;
+using Tayo.DataAccess.Data;
+using Tayo.DataAccess.Repository.IRepository;
+using Tayo.DataAccess.Repository;
+using TayoBook.DataAccess.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 

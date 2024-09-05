@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace Bulky.Models
+namespace Tayo.Models
 {
-    public class Category
+    public class Collection
     {
         [Key]
         public int Id { get; set; }

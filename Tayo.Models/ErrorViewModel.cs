@@ -1,4 +1,4 @@
-namespace Bulky.Models
+namespace Tayo.Models
 {
     public class ErrorViewModel
     {

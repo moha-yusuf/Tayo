@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Bulky.DataAccess.Data;
-using Bulky.Models;
-using Bulky.DataAccess.Repository.IRepository;
-using BulkyBook.DataAccess.Repository.IRepository;
+using Tayo.DataAccess.Data;
+using Tayo.Models;
+using Tayo.DataAccess.Repository.IRepository;
+using TayoBook.DataAccess.Repository.IRepository;
 
 namespace TayoWeb.Areas.Admin.Controllers
 {

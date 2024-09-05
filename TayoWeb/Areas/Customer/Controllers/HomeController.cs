@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Bulky.Models;
+using Tayo.Models;
 
 namespace TayoWeb.Areas.Customer.Controllers
 {
