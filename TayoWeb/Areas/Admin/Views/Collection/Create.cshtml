@@ -1,0 +1,28 @@
+﻿@model Collection
+
+<h1 class="pb-4">Create Collection</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" id="collectionName">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DisplayOrder" class="form-label"></label>
+        <input asp-for="DisplayOrder" class="form-control" id="displayOrder">
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+    </div>
+@*     <div class="mb-3">
+    <label for="collectionDescription" class="form-label">Description</label>
+    <textarea class="form-control" id="collectionDescription" rows="3">Comfortable and stylish footwear for all occasions.</textarea>
+    </div> *@
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Collection" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}
