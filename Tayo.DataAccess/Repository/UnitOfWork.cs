@@ -13,12 +13,12 @@ namespace Tayo.DataAccess.Repository
     {
         private ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }
-        public ICollectionRepository Collection { get; private set; }
+        //public ICollectionRepository Collection { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
-            Collection = new CollectionRepository(_db);
+            //Collection = new CollectionRepository(_db);
         }
 
         public void Save()
