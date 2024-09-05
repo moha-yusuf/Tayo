@@ -14,9 +14,6 @@ namespace Tayo.Models
         [Required]
         [MaxLength(50)]
         public string? Name { get; set; } // e.g., "Small", "Medium", "Large"
-        [Required]
-        public string? ImageUrl { get; set; } // Optional: Image showing the product in this ProductSize, if applicable
-
         public int DisplayOrder { get; set; } // Controls the order in which ProductSizes are displayed
 
         public bool IsActive { get; set; } // Whether this ProductSize is available for selection
