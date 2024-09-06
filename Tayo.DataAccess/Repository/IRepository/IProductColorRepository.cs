@@ -8,8 +8,8 @@ using Tayo.Models;
 
 namespace Tayo.DataAccess.Repository.IRepository
 {
-    public interface IProductSizeRepository : IRepository<ProductSize>
+    public interface IProductColorRepository : IRepository<ProductColor>
     {
-        void Update(ProductSize obj);
+        void Update(ProductColor obj);
     }
 }
