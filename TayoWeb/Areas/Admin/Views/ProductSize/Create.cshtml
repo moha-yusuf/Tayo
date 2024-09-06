@@ -1,6 +1,6 @@
-﻿@model Collection
+﻿@model ProductSize
 
-<h1 class="pb-4">Create Collection</h1>
+<h1 class="pb-4">Create Size</h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post">
     <div class="mb-3">
@@ -8,13 +8,20 @@
         <input asp-for="Name" class="form-control" id="collectionName">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsActive" class="form-check-input" id="isActive">
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+
     <div class="mb-3">
         <label asp-for="DisplayOrder" class="form-label"></label>
         <input asp-for="DisplayOrder" class="form-control" id="displayOrder">
         <span asp-validation-for="DisplayOrder" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-controller="Collection" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+    <a asp-controller="ProductSize" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 
 @section Scripts {

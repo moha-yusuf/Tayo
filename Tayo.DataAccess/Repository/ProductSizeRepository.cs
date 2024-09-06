@@ -17,7 +17,7 @@ namespace Tayo.DataAccess.Repository
             _db = db;
         }
 
-        public void update(ProductSize size)
+        public void Update(ProductSize size)
         {
             _db.ProductSizes.Update(size);
         }

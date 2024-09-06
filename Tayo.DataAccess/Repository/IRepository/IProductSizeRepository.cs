@@ -10,6 +10,6 @@ namespace Tayo.DataAccess.Repository.IRepository
 {
     public interface IProductSizeRepository : IRepository<ProductSize>
     {
-        void update(ProductSize size);
+        void Update(ProductSize size);
     }
 }
