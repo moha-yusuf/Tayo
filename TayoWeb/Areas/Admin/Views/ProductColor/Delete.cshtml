@@ -1,0 +1,23 @@
+﻿@model ProductColor
+
+<h1 class="pb-4">Delete Color</h1>
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" disabled class="form-control" id="ProductColorName">
+    </div>
+
+    <div class="mb-3 form-check">
+        <input asp-for="IsActive" class="form-check-input" id="IsActive" disabled />
+        <label asp-for="IsActive" class="form-check-label"></label>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DisplayOrder" class="form-label"></label>
+        <input asp-for="DisplayOrder" disabled class="form-control" id="displayOrder">
+    </div>
+
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="ProductColor" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+</form>

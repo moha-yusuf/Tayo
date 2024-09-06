@@ -34,8 +34,8 @@ namespace Tayo.DataAccess.Data
                 new ProductSize { Id = 2, Name = "Medium", DisplayOrder = 2, IsActive = true }
                 );
             modelBuilder.Entity<ProductColor>().HasData(
-                new ProductColor { Id = 1, Name = "Black", ImageUrl = "", DisplayOrder = 1, IsActive = true },
-                new ProductColor { Id = 2, Name = "White", ImageUrl = "", DisplayOrder = 2, IsActive = true }
+                new ProductColor { Id = 1, Name = "Black", DisplayOrder = 1, IsActive = true },
+                new ProductColor { Id = 2, Name = "White", DisplayOrder = 2, IsActive = true }
                 );
         }
     }
