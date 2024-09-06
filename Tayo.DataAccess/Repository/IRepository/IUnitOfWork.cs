@@ -13,6 +13,7 @@ namespace TayoBook.DataAccess.Repository.IRepository
         ICollectionRepository Collection { get; }
         IProductSizeRepository ProductSize { get; }
         IProductColorRepository ProductColor { get; }
+        IProductRepository Product { get; }
 
         void Save();
     }

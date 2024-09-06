@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tayo.Models;
-using Tayo.Models.Tayo.Models;
 
 namespace Tayo.DataAccess.Data
 {
@@ -16,6 +15,7 @@ namespace Tayo.DataAccess.Data
         public DbSet<ProductSize> ProductSizes { get; set; }
 
         public DbSet<ProductColor> ProductColors { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

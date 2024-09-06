@@ -16,6 +16,7 @@ namespace Tayo.DataAccess.Repository
         public ICollectionRepository Collection { get; private set; }
         public IProductSizeRepository ProductSize { get; private set; }
         public IProductColorRepository ProductColor { get; private set; }
+        public IProductRepository Product { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -24,6 +25,7 @@ namespace Tayo.DataAccess.Repository
             Collection = new CollectionRepository(_db);
             ProductSize = new ProductSizeRepository(_db);
             ProductColor = new ProductColorRepository(_db);
+            Product = new ProductRepository(_db);
         }
 
         public void Save()
