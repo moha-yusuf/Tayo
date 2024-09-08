@@ -4,6 +4,7 @@ using Tayo.Models;
 using Tayo.DataAccess.Repository.IRepository;
 using TayoBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Tayo.Models.ViewModels;
 
 namespace TayoWeb.Areas.Admin.Controllers
 {
@@ -24,60 +25,56 @@ namespace TayoWeb.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll()
+            ProductVM productVM = new()
+            {
+                Product = new Product(),
+                CategoryList = _unitOfWork.Category.GetAll()
                 .Select(u => new SelectListItem
                 {
                     Text = u.Name,
                     Value = u.Id.ToString()
-                });
-
-            IEnumerable<SelectListItem> CollectionList = _unitOfWork.Collection.GetAll()
-            .Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-
-            IEnumerable<SelectListItem> SizeList = _unitOfWork.ProductSize.GetAll()
-            .Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-
-            IEnumerable<SelectListItem> ColorList = _unitOfWork.ProductColor.GetAll()
-            .Select(u => new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-
-            ViewBag.CategoryList = CategoryList;
-            ViewBag.CollectionList = CollectionList;
-            ViewBag.SizeList = SizeList;
-            ViewBag.ColorList = ColorList;
+                }),
+                CollectionList = _unitOfWork.Collection.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                ProductSizeList = _unitOfWork.ProductSize.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                ProductColorList = _unitOfWork.ProductColor.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                })
+            };
             
-            return View();
+            return View(productVM);
         }
 
         [HttpPost]
-        public IActionResult Create(Product obj)
+        public IActionResult Create(ProductVM obj)
         {
             // add custom validation
-            if (obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Product.Name == obj.Product.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("Name", "Name and Display Order can not exactly match");
             }
 
             // add custom validation for validation summary only
-            if (obj.Name != null && obj.Name.ToLower() == "test")
+            if (obj.Product.Name != null && obj.Product.Name.ToLower() == "test")
             {
                 ModelState.AddModelError("", "Name can not be \"test\"");
             }
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(obj);
+                _unitOfWork.Product.Add(obj.Product);
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully.";
                 return RedirectToAction("Index");

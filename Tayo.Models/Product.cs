@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -36,24 +37,28 @@ namespace Tayo.Models
         [DisplayName("Category")]
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
+        [ValidateNever]
         public Category? Category { get; set; }
 
         [Required]
         [DisplayName("Collection")]
         public int CollectionId { get; set; }
         [ForeignKey("CollectionId")]
+        [ValidateNever]
         public Collection? Collection { get; set; }
             
         [Required]
         [DisplayName("Color")]
         public int? ProductColorId { get; set; }
         [ForeignKey("ProductColorId")]
+        [ValidateNever]
         public ProductColor? ProductColor { get; set; }
 
         [Required]
         [DisplayName("Size")]
         public int? ProductSizeId { get; set; }
         [ForeignKey("ProductSizeId")]
+        [ValidateNever]
         public ProductSize? ProductSize { get; set; }
     }
 }

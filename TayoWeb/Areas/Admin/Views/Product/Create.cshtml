@@ -1,65 +1,66 @@
-﻿@model Product
+﻿@model ProductVM
 
 <h1 class="pb-4">Create </h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post">
     <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" id="collectionName">
-        <span asp-validation-for="Name" class="text-danger"></span>
+        <label asp-for="Product.Name" class="form-label"></label>
+        <input asp-for="Product.Name" class="form-control" id="collectionName">
+        <span asp-validation-for="Product.Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Description" class="form-label"></label>
-        <textarea asp-for="Description" class="form-control" rows="3" spellcheck="true"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
+        <label asp-for="Product.Description" class="form-label"></label>
+        <textarea asp-for="Product.Description" class="form-control" rows="3" spellcheck="true"></textarea>
+        <span asp-validation-for="Product.Description" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Price" class="form-label"></label>
-        <input asp-for="Price" class="form-control" id="Price">
-        <span asp-validation-for="Price" class="text-danger"></span>
+        <label asp-for="Product.Price" class="form-label"></label>
+        <input asp-for="Product.Price" class="form-control" id="Price">
+        <span asp-validation-for="Product.Price" class="text-danger"></span>
     </div>
+    @* If Product.ProductSizeId doesn't work, try @Model.Product.ProductSizeId *@
     <div class="mb-3">
-        <label asp-for="ProductSizeId" class="form-label"></label>
-        <select asp-for="ProductSizeId" asp-items="ViewBag.SizeList" class="form-select" id="ProductSizeId">
+        <label asp-for="Product.ProductSizeId" class="form-label"></label>
+        <select asp-for="Product.ProductSizeId" asp-items="@Model.ProductSizeList" class="form-select" id="ProductSizeId">
             <option Disabled selected>--Select Size--</option>
         </select>
-        <span asp-validation-for="ProductSizeId" class="text-danger"></span>
+        <span asp-validation-for="Product.ProductSizeId" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="ProductColorId" class="form-label"></label>
-        <select asp-for="ProductColorId" asp-items="ViewBag.ColorList" class="form-select" id="ProductColorId">
+        <label asp-for="Product.ProductColorId" class="form-label"></label>
+        <select asp-for="Product.ProductColorId" asp-items="@Model.ProductColorList" class="form-select" id="ProductColorId">
             <option Disabled selected>--Select Color--</option>
         </select>
-        <span asp-validation-for="ProductColorId" class="text-danger"></span>
+        <span asp-validation-for="Product.ProductColorId" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="CollectionId" class="form-label"></label>
-        <select asp-for="CollectionId" asp-items="ViewBag.CollectionList" class="form-select" id="CollectionId">
+        <label asp-for="Product.CollectionId" class="form-label"></label>
+        <select asp-for="Product.CollectionId" asp-items="@Model.CollectionList" class="form-select" id="CollectionId">
             <option Disabled selected>--Select Collection--</option>
         </select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
+        <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="CategoryId" class="form-label"></label>
-        <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select" id="CategoryId">
+        <label asp-for="Product.CategoryId" class="form-label"></label>
+        <select asp-for="Product.CategoryId" asp-items="@Model.CategoryList" class="form-select" id="CategoryId">
             <option Disabled selected>--Select Category--</option>
         </select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
+        <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="DisplayOrder" class="form-label"></label>
-        <input asp-for="DisplayOrder" class="form-control" id="displayOrder">
-        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        <label asp-for="Product.DisplayOrder" class="form-label"></label>
+        <input asp-for="Product.DisplayOrder" class="form-control" id="displayOrder">
+        <span asp-validation-for="Product.DisplayOrder" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="ImageUrl" class="form-label"></label>
-        <input asp-for="ImageUrl" type="file" class="form-control" id="ImageUrl">
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        <label asp-for="Product.ImageUrl" class="form-label"></label>
+        <input asp-for="Product.ImageUrl" type="file" class="form-control" id="ImageUrl">
+        <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <input asp-for="IsAvailable" class="form-check-input" id="IsAvailable">
-        <label asp-for="IsAvailable" class="form-check-label"></label>
-        <span asp-validation-for="IsAvailable" class="text-danger"></span>
+        <input asp-for="Product.IsAvailable" class="form-check-input" id="IsAvailable">
+        <label asp-for="Product.IsAvailable" class="form-check-label"></label>
+        <span asp-validation-for="Product.IsAvailable" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
