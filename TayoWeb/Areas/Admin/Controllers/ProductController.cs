@@ -3,6 +3,7 @@ using Tayo.DataAccess.Data;
 using Tayo.Models;
 using Tayo.DataAccess.Repository.IRepository;
 using TayoBook.DataAccess.Repository.IRepository;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TayoWeb.Areas.Admin.Controllers
 {
@@ -23,6 +24,39 @@ namespace TayoWeb.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+
+            IEnumerable<SelectListItem> CollectionList = _unitOfWork.Collection.GetAll()
+            .Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            IEnumerable<SelectListItem> SizeList = _unitOfWork.ProductSize.GetAll()
+            .Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            IEnumerable<SelectListItem> ColorList = _unitOfWork.ProductColor.GetAll()
+            .Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            ViewBag.CategoryList = CategoryList;
+            ViewBag.CollectionList = CollectionList;
+            ViewBag.SizeList = SizeList;
+            ViewBag.ColorList = ColorList;
+            
             return View();
         }
 

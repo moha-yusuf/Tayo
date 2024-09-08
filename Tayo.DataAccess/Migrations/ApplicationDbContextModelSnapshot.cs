@@ -104,6 +104,134 @@ namespace Tayo.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Tayo.Models.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CollectionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int?>("ProductColorId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductSizeId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CollectionId");
+
+                    b.HasIndex("ProductColorId");
+
+                    b.HasIndex("ProductSizeId");
+
+                    b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CollectionId = 1,
+                            Description = "A comfortable white t-shirt made from 100% cotton.",
+                            DisplayOrder = 1,
+                            ImageUrl = "",
+                            IsAvailable = true,
+                            Name = "Classic White T-Shirt",
+                            Price = 19.99m,
+                            ProductColorId = 1,
+                            ProductSizeId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            CollectionId = 2,
+                            Description = "A stylish blue denim jacket perfect for casual wear.",
+                            DisplayOrder = 2,
+                            ImageUrl = "",
+                            IsAvailable = true,
+                            Name = "Blue Denim Jacket",
+                            Price = 49.99m,
+                            ProductColorId = 2,
+                            ProductSizeId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 2,
+                            CollectionId = 3,
+                            Description = "Durable black leather boots for all-weather conditions.",
+                            DisplayOrder = 3,
+                            ImageUrl = "",
+                            IsAvailable = true,
+                            Name = "Black Leather Boots",
+                            Price = 89.99m,
+                            ProductColorId = 1,
+                            ProductSizeId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            CollectionId = 1,
+                            Description = "A lightweight red cotton dress, perfect for summer outings.",
+                            DisplayOrder = 4,
+                            ImageUrl = "",
+                            IsAvailable = true,
+                            Name = "Red Cotton Dress",
+                            Price = 39.99m,
+                            ProductColorId = 2,
+                            ProductSizeId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 3,
+                            CollectionId = 2,
+                            Description = "A high-quality brown leather belt with a silver buckle.",
+                            DisplayOrder = 5,
+                            ImageUrl = "",
+                            IsAvailable = true,
+                            Name = "Brown Leather Belt",
+                            Price = 24.99m,
+                            ProductColorId = 1,
+                            ProductSizeId = 1
+                        });
+                });
+
             modelBuilder.Entity("Tayo.Models.ProductColor", b =>
                 {
                     b.Property<int>("Id")
@@ -184,135 +312,7 @@ namespace Tayo.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Tayo.Models.Tayo.Models.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CollectionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int?>("ProductColorId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductSizeId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("CollectionId");
-
-                    b.HasIndex("ProductColorId");
-
-                    b.HasIndex("ProductSizeId");
-
-                    b.ToTable("Product");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryId = 1,
-                            CollectionId = 1,
-                            Description = "A comfortable white t-shirt made from 100% cotton.",
-                            DisplayOrder = 1,
-                            ImageUrl = "",
-                            IsAvailable = true,
-                            Name = "Classic White T-Shirt",
-                            Price = 19.99m,
-                            ProductColorId = 1,
-                            ProductSizeId = 2
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 1,
-                            CollectionId = 2,
-                            Description = "A stylish blue denim jacket perfect for casual wear.",
-                            DisplayOrder = 2,
-                            ImageUrl = "",
-                            IsAvailable = true,
-                            Name = "Blue Denim Jacket",
-                            Price = 49.99m,
-                            ProductColorId = 2,
-                            ProductSizeId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryId = 2,
-                            CollectionId = 3,
-                            Description = "Durable black leather boots for all-weather conditions.",
-                            DisplayOrder = 3,
-                            ImageUrl = "",
-                            IsAvailable = true,
-                            Name = "Black Leather Boots",
-                            Price = 89.99m,
-                            ProductColorId = 1,
-                            ProductSizeId = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryId = 1,
-                            CollectionId = 1,
-                            Description = "A lightweight red cotton dress, perfect for summer outings.",
-                            DisplayOrder = 4,
-                            ImageUrl = "",
-                            IsAvailable = true,
-                            Name = "Red Cotton Dress",
-                            Price = 39.99m,
-                            ProductColorId = 2,
-                            ProductSizeId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CategoryId = 3,
-                            CollectionId = 2,
-                            Description = "A high-quality brown leather belt with a silver buckle.",
-                            DisplayOrder = 5,
-                            ImageUrl = "",
-                            IsAvailable = true,
-                            Name = "Brown Leather Belt",
-                            Price = 24.99m,
-                            ProductColorId = 1,
-                            ProductSizeId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Tayo.Models.Tayo.Models.Product", b =>
+            modelBuilder.Entity("Tayo.Models.Product", b =>
                 {
                     b.HasOne("Tayo.Models.Category", "Category")
                         .WithMany()

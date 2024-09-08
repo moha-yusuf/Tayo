@@ -13,7 +13,7 @@ namespace Tayo.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Product",
+                name: "Products",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -31,27 +31,27 @@ namespace Tayo.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Product_Categories_CategoryId",
+                        name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_Collections_CollectionId",
+                        name: "FK_Products_Collections_CollectionId",
                         column: x => x.CollectionId,
                         principalTable: "Collections",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_ProductColors_ProductColorId",
+                        name: "FK_Products_ProductColors_ProductColorId",
                         column: x => x.ProductColorId,
                         principalTable: "ProductColors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_ProductSizes_ProductSizeId",
+                        name: "FK_Products_ProductSizes_ProductSizeId",
                         column: x => x.ProductSizeId,
                         principalTable: "ProductSizes",
                         principalColumn: "Id",
@@ -59,7 +59,7 @@ namespace Tayo.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Product",
+                table: "Products",
                 columns: new[] { "Id", "CategoryId", "CollectionId", "Description", "DisplayOrder", "ImageUrl", "IsAvailable", "Name", "Price", "ProductColorId", "ProductSizeId" },
                 values: new object[,]
                 {
@@ -71,23 +71,23 @@ namespace Tayo.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_CategoryId",
-                table: "Product",
+                name: "IX_Products_CategoryId",
+                table: "Products",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_CollectionId",
-                table: "Product",
+                name: "IX_Products_CollectionId",
+                table: "Products",
                 column: "CollectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductColorId",
-                table: "Product",
+                name: "IX_Products_ProductColorId",
+                table: "Products",
                 column: "ProductColorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_ProductSizeId",
-                table: "Product",
+                name: "IX_Products_ProductSizeId",
+                table: "Products",
                 column: "ProductSizeId");
         }
 
@@ -95,7 +95,7 @@ namespace Tayo.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Product");
+                name: "Products");
         }
     }
 }
