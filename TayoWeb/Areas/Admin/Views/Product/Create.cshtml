@@ -2,7 +2,7 @@
 
 <h1 class="pb-4">Create </h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label asp-for="Product.Name" class="form-label"></label>
         <input asp-for="Product.Name" class="form-control" id="collectionName">
@@ -53,16 +53,14 @@
         <span asp-validation-for="Product.DisplayOrder" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Product.ImageUrl" class="form-label"></label>
-        <input asp-for="Product.ImageUrl" type="file" class="form-control" id="ImageUrl">
-        <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
         <input asp-for="Product.IsAvailable" class="form-check-input" id="IsAvailable">
         <label asp-for="Product.IsAvailable" class="form-check-label"></label>
         <span asp-validation-for="Product.IsAvailable" class="text-danger"></span>
     </div>
-
+    <div class="mb-3">
+        <label asp-for="Product.ImageUrl" class="form-label"></label>
+        <input type="file" class="form-control" id="ImageUrl">
+    </div>
     <button type="submit" class="btn btn-primary">Create</button>
     <a asp-controller="Product" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>
