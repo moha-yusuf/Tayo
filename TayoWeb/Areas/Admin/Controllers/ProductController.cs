@@ -5,6 +5,7 @@ using Tayo.DataAccess.Repository.IRepository;
 using TayoBook.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Tayo.Models.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 
 namespace TayoWeb.Areas.Admin.Controllers
 {
@@ -12,9 +13,11 @@ namespace TayoWeb.Areas.Admin.Controllers
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ProductController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ProductController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -23,7 +26,7 @@ namespace TayoWeb.Areas.Admin.Controllers
             return View(productList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
             ProductVM productVM = new()
             {
@@ -54,74 +57,95 @@ namespace TayoWeb.Areas.Admin.Controllers
                 })
             };
             
+            if (id == null || id == 0)
+            {   
+                // Create
+                return View(productVM);
+            } 
+
+            // Update
+            productVM.Product = _unitOfWork.Product.Get(u=>u.Id==id);
             return View(productVM);
         }
 
         [HttpPost]
-        public IActionResult Create(ProductVM obj)
+        public IActionResult Upsert(ProductVM productVM, IFormFile? ImageFile)
         {
-            // add custom validation
-            if (obj.Product.Name == obj.Product.DisplayOrder.ToString())
-            {
-                ModelState.AddModelError("Name", "Name and Display Order can not exactly match");
-            }
-
             // add custom validation for validation summary only
-            if (obj.Product.Name != null && obj.Product.Name.ToLower() == "test")
+            if (productVM.Product.Name != null && productVM.Product.Name.ToLower() == "test")
             {
                 ModelState.AddModelError("", "Name can not be \"test\"");
             }
 
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Add(obj.Product);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (ImageFile != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\product");
+
+                    if (!string.IsNullOrEmpty(productVM.Product.ImageUrl))
+                    {
+                        /*delete the old image*/
+                        var oldImagePath = Path.Combine(wwwRootPath, productVM.Product.ImageUrl.TrimStart('\\'));
+
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        ImageFile.CopyTo(fileStream);
+                    }
+
+                    productVM.Product.ImageUrl = @"\images\product\" + fileName;
+                }
+
+                if (productVM.Product.Id == 0)
+                {
+                    _unitOfWork.Product.Add(productVM.Product);
+                }
+                else
+                {
+                    _unitOfWork.Product.Update(productVM.Product);
+                }
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully.";
                 return RedirectToAction("Index");
             }
-            return View();
-
-        }
-
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
+            else
             {
-                return NotFound();
-            }
-            Product? productFromDb = _unitOfWork.Product.Get(u => u.Id == id); ;
-            if (productFromDb == null)
-            {
-                return NotFound();
-            }
+                // Repopulate select items
+                productVM.CategoryList = _unitOfWork.Category.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                productVM.CollectionList = _unitOfWork.Collection.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                productVM.ProductSizeList = _unitOfWork.ProductSize.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
+                productVM.ProductColorList = _unitOfWork.ProductColor.GetAll()
+                .Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
 
-            return View(productFromDb);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Product obj)
-        {
-            // add custom validation
-            if (obj.Name == obj.DisplayOrder.ToString())
-            {
-                ModelState.AddModelError("Name", "Name and Display Order can not exactly match");
+                return View(productVM);
             }
-
-            // add custom validation for validation summary only
-            if (obj.Name != null && obj.Name.ToLower() == "test")
-            {
-                ModelState.AddModelError("", "Name can not be \"test\"");
-            }
-
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Product.Update(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Product updated successfully.";
-                return RedirectToAction("Index");
-            }
-            return View();
-
         }
 
         public IActionResult Delete(int? id)

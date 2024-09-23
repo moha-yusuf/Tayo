@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Tayo.Models\Tayo.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+
 </Project>

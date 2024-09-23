@@ -1,8 +1,10 @@
 ﻿@model ProductVM
 
-<h1 class="pb-4">Create </h1>
+<h1 class="pb-4">@(Model.Product.Id != 0 ? "UPDATE" : "CREATE") PRODUCT</h1>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <form method="post" enctype="multipart/form-data">
+    <input asp-for="Product.Id" hidden />
+    <input asp-for="Product.ImageUrl" hidden />
     <div class="mb-3">
         <label asp-for="Product.Name" class="form-label"></label>
         <input asp-for="Product.Name" class="form-control" id="collectionName">
@@ -59,9 +61,17 @@
     </div>
     <div class="mb-3">
         <label asp-for="Product.ImageUrl" class="form-label"></label>
-        <input type="file" class="form-control" id="ImageUrl">
+        @if (!string.IsNullOrEmpty(Model.Product.ImageUrl))
+        {
+            <div>
+                <img src="@Model.Product.ImageUrl" class="img-fluid mb-3" style="max-width: 250px;" />
+            </div>
+        }
+        <input type="file" name="ImageFile" class="form-control" id="ImageUrl">
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">
+        @(Model.Product.Id == 0 ? "CREATE":"UPDATE")
+     </button>
     <a asp-controller="Product" asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 
