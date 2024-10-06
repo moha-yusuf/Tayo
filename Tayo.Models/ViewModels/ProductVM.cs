@@ -12,12 +12,12 @@ namespace Tayo.Models.ViewModels
     {
         public Product Product { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem> ProductSizeList { get; set; }
+        public IEnumerable<SelectListItem>? ProductSizeList { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem> ProductColorList { get; set; }
+        public IEnumerable<SelectListItem>? ProductColorList { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem> CollectionList { get; set; }
+        public IEnumerable<SelectListItem>? CollectionList { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem> CategoryList { get; set; }
+        public IEnumerable<SelectListItem>? CategoryList { get; set; }
     }
 }

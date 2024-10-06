@@ -12,8 +12,8 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Category</th>
             <th scope="col">Collection</th>
+            <th scope="col">Category</th>
             <th scope="col">Size</th>
             <th scope="col">Availability</th>
             <th scope="col">Display Order</th>
@@ -26,9 +26,9 @@
             <tr>
                 <td>@obj.Name</td>
                 <td>@obj.Price</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@obj.Collection.Name</td>
+                <td>@obj.Category.Name</td>
+                <td>@obj.ProductSize.Name</td>
                 <td>@obj.IsAvailable</td>
                 <td>@obj.DisplayOrder</td>
                 <td class="d-flex flex-column flex-sm-row justify-content-center gap-2">
