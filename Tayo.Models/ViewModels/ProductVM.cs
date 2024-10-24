@@ -10,7 +10,7 @@ namespace Tayo.Models.ViewModels
 {
     public class ProductVM
     {
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem>? ProductSizeList { get; set; }
         [ValidateNever]

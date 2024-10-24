@@ -29,7 +29,6 @@ namespace Tayo.DataAccess.Repository
                 objFromDb.Description = obj.Description;
                 objFromDb.Price = obj.Price;
                 objFromDb.IsAvailable = obj.IsAvailable;
-                objFromDb.DisplayOrder = obj.DisplayOrder;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.CollectionId = obj.CollectionId;
                 objFromDb.ProductColorId = obj.ProductColorId;

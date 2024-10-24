@@ -29,8 +29,6 @@ namespace Tayo.Models
         public decimal Price { get; set; } 
         [DisplayName("Availabilty")]
         public bool IsAvailable { get; set; } = false; // Set default value to false
-        [DisplayName("Display Order")]
-        public int DisplayOrder { get; set; }
 
         // Foreign key relationships to other models
         [Required]
