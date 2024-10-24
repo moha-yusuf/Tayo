@@ -178,5 +178,16 @@ namespace TayoWeb.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        #region API CALLS
+
+        [HttpGet]
+        public IActionResult GetAll(int id)
+        {
+            List<Product> productList = _unitOfWork.Product.GetAll(includeProperties: "Category,Collection,ProductSize").ToList();
+            return Json(new {data = productList});
+        }
+
+        #endregion
+
     }
 }
