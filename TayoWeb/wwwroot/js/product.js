@@ -11,7 +11,7 @@
         {
             data: 'id',
             render: function (data) {
-                return `<div class="w-75 btn-group" role="group">
+                return `<div d-flex flex-column flex-sm-row justify-content-center gap-2" role="group">
                         <a href="/admin/product/upsert?id=${data}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
