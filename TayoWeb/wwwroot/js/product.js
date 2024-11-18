@@ -15,7 +15,7 @@
                         <a href="/admin/product/upsert?id=${data}" class="btn btn-warning btn-sm">
                             <i class="bi bi-pencil-square"></i> Edit
                         </a>
-                        <a class="btn btn-danger btn-sm">
+                        <a href="/admin/product/delete/${data}" class="btn btn-danger btn-sm">
                             <i class="bi bi-trash"></i> Delete
                         </a>
                     </div>`;
