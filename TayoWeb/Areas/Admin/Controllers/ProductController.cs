@@ -157,7 +157,7 @@ namespace TayoWeb.Areas.Admin.Controllers
             return Json(new {data = productList});
         }
 
-        [Route("Admin/Product/Delete/{id}")]
+        [HttpDelete]
         public IActionResult Delete(int? id)
         {
             Product productToBeDeleted = _unitOfWork.Product.Get(u => u.Id == id);
@@ -184,6 +184,5 @@ namespace TayoWeb.Areas.Admin.Controllers
             return Json(new { success = true, message = "Delete Successful" });
         }
         #endregion
-
     }
 }
